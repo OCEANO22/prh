@@ -3,7 +3,7 @@
   "compatibility_date": "2025-05-05",
   "main": "api/index.ts",
   "assets": {
-	"directory": "./assets",
+	"directory": "./public",
 	"binding": "ASSETS",
 	"not_found_handling": "single-page-application"
   },
