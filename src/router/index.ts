@@ -10,6 +10,16 @@ const router = createRouter({
       component: HomeView,
     },
     {
+      path: '/prh',
+      name: 'create-prh',
+      component: () => import('../views/CreatePrhView.vue'),
+    },
+    {
+      path: '/prh/:id',
+      name: 'edit-prh',
+      component: () => import('../views/EditPrhView.vue'),
+    },
+    {
       path: '/about',
       name: 'about',
       // route level code-splitting

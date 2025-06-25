@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
+import { RouterLink } from 'vue-router'
 
 interface Prh {
   id: string
@@ -24,6 +25,9 @@ onMounted(() => {
 <template>
   <main>
     <div>Daftar PRH</div>
+    <div>
+      <RouterLink to="/prh">Buat PRH</RouterLink>
+    </div>
 
     <div>
       <ul>
