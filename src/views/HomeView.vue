@@ -20,6 +20,15 @@ const fetchPrhs = async () => {
 onMounted(() => {
   fetchPrhs()
 })
+
+const removePrh = async (id: string) => {
+  const response = await fetch(`/api/prhs/${id}`, {
+    method: 'DELETE',
+  })
+  if (response.ok) {
+    fetchPrhs()
+  }
+}
 </script>
 
 <template>
@@ -28,13 +37,18 @@ onMounted(() => {
     <div>
       <RouterLink to="/prh">Buat PRH</RouterLink>
     </div>
-
     <div>
       <ul>
         <li v-for="prh in prhs" :key="prh.id">
           <div>{{ prh.nama }}</div>
           <div>{{ prh.email }}</div>
           <div>{{ prh.pesan }}</div>
+          <div>
+            <RouterLink :to="`/prh/${prh.id}`">Edit</RouterLink>
+          </div>
+          <div>
+            <button @click="removePrh(prh.id)">Hapus Data</button>
+          </div>
         </li>
       </ul>
     </div>

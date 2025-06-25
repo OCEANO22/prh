@@ -1,28 +1,41 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 
 const router = useRouter();
+
+const route = useRoute()
+const id = route.params.id
 
 const name = ref('')
 const email = ref('')
 const pesan = ref('')
 
 const saveData = async () => {
-    const newPrh = JSON.stringify({
+    const prh = JSON.stringify({
         name: name.value,
         email: email.value,
         pesan: pesan.value,
     })
 
-    const response = await fetch('/api/prhs', {
-        method:'POST',
-        body: newPrh,
+    const response = await fetch(`/api/prhs/${id}`, {
+        method:'PUT',
+        body: prh,
     })
     const data = await response.json()
 
     router.push('/')
 }
+
+onMounted(() => {
+    fetch(`/api/prhs/${id}`)
+        .then(response => response.json())
+        .then(data => {
+            name.value = data.name
+            email.value = data.email
+            pesan.value = data.pesan
+        })
+})
 </script>
 
 <template>
