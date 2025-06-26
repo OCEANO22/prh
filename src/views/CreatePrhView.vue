@@ -15,10 +15,17 @@ const saveData = async () => {
         pesan: pesan.value,
     })
 
-    const response = await fetch('/api/prhs', {
-        method:'POST',
-        body: newPrh,
-    })
+    const response = await fetch("/api/prhs", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    nama: "test",
+    email: "test@example.com",
+    pesan: "ini pesan"
+  })
+});
     const data = await response.json()
 
     router.push('/')
