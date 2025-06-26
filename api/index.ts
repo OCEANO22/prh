@@ -14,7 +14,7 @@ app.get('/api/prhs', async (c) => {
 
 app.post('/api/prhs', async (c) => {
   const newId = crypto.randomUUID();
-  const input = await c.req.json<any>();
+  const input = await c.req.json();
 
   const stmt = c.env.DB.prepare(
     "INSERT INTO prhs(id, nama, email, pesan) VALUES (?, ?, ?, ?)"
@@ -33,7 +33,7 @@ app.get('/api/prhs/:id', async (c) => {
 app.put('/api/prhs/:id', async (c) => {
   const prhId = c.req.param('id')
 
-  const input = await c.req.json<any>()
+  const input = await c.req.json()
   const query = `UPDATE prhs SET nama = "${input.nama}", email = "${input.email}", pesan = "${input.pesan}" WHERE id = "${prhId}"`
   const prh = await c.env.DB.exec(query)
 
