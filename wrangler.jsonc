@@ -1,15 +1,15 @@
 {
-  "name": "prh",
-  "main": "api/index.ts",
-  "compatibility_date": "2025-05-05",
-  "assets": {
-    "directory": "./public",
-    "binding": "ASSETS",
-    "not_found_handling": "single-page-application"
+
+"name": "prh",
+  "compatibility_date": "2025-06-25",
+  "assets": { 
+    "not_found_handling": "single-page-application",
+    "binding": "ASSETS"
   },
+  "main": "./api/index.js",
   "d1_databases": [
     {
-      "binding": "DB",
+      "binding": "prh",
       "database_name": "prh",
       "database_id": "33ba82f7-ae8c-4a39-b72f-34b977644876"
     }
