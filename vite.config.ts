@@ -8,7 +8,7 @@ import { cloudflare } from "@cloudflare/vite-plugin";
 // https://vite.dev/config/
 export default defineConfig({
    build: {
-    outDir: 'dist'
+    outDir: 'public'
   },
   plugins: [
     vue(),
