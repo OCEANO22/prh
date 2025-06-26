@@ -13,12 +13,16 @@ app.get('/api/prhs', async (c) => {
 })
 
 app.post('/api/prhs', async (c) => {
-  const newId = crypto.randomUUID()
-  const input = await c.req.json<any>()
-  const query = `INSERT INTO prhs(id,nama,email,pesan) values ("${newId}","${input.nama}","${input.email}","${input.pesan}")`
-  const newPrh = await c.env.DB.exec(query)
-  return c.json(newPrh)
-})
+  const newId = crypto.randomUUID();
+  const input = await c.req.json<any>();
+
+  const stmt = c.env.DB.prepare(
+    "INSERT INTO prhs(id, nama, email, pesan) VALUES (?, ?, ?, ?)"
+  );
+  const result = await stmt.bind(newId, input.nama, input.email, input.pesan).run();
+
+  return c.json({ success: true, result });
+});
 
 app.get('/api/prhs/:id', async (c) => {
   const prhId = c.req.param('id')
