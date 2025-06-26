@@ -4,7 +4,13 @@
   "compatibility_date": "2025-05-05",
   "assets": {
     "directory": "./dist",
-    "directory": "./public",
+    "include": [
+      "**/*.js",
+      "**/*.wasm",
+      "**/*.json",
+      "**/*.html",
+      "**/*.css"
+    ],
     "binding": "ASSETS",
     "not_found_handling": "single-page-application"
   },
